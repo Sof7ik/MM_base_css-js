@@ -2,15 +2,20 @@ function validateInputField(event, element = null)
 {
     function setElementValid(element, invalidClassName = "invalid", validClassName = "valid")
     {
-        element.classList.remove(invalidClassName);
+        element.closest('.mediamintForm-input-wrapper').classList.remove(invalidClassName);
         // element.classList.add(validClassName);
         return true;
     }
 
-    function setElementInvalid(element, invalidClassName = "invalid", validClassName = "valid")
-    {
-        element.classList.add(invalidClassName);
+    function setElementInvalid(element, errorMessage = "", invalidClassName = "invalid", validClassName = "valid") {
+        element.closest('.mediamintForm-input-wrapper').classList.add(invalidClassName);
         // element.classList.remove(validClassName);
+
+        if (errorMessage)
+        {
+            element.closest('.mediamintForm-input-wrapper')
+                .querySelector('.mediamintForm-input-invalid-message').textContent = errorMessage;
+        }
         return false;
     }
 
@@ -36,13 +41,13 @@ function validateInputField(event, element = null)
             if (emailRegExp.test(inputValue))
                 return setElementValid(input);
             else
-                return setElementInvalid(input);
+                return setElementInvalid(input, "Введён неверный Email");
         }
         else
         {
             // on form submit
             if (!event)
-                return setElementInvalid(input);
+                return setElementInvalid(input, "Поле обязательно для заполнения");
             // on input
             else
             {
@@ -123,12 +128,12 @@ async function onFormSubmit(event)
 {
     function showFinalModal(htmlText, iconSrc)
     {
-        const totalWrapper = form.closest('.free-consult-form-success-wrapper');
+        const totalWrapper = form.closest('.form-wrapper');
 
         totalWrapper.querySelector(".success-text").innerHTML = htmlText;
         totalWrapper.querySelector(".success-icon").src = iconSrc;
 
-        totalWrapper.querySelector(".success-wrapper").classList.add('showed');
+        totalWrapper.querySelector(".mediaMint-form__success-wrapper").classList.add('showed');
     }
 
     let isReadySend = [];
@@ -150,7 +155,7 @@ async function onFormSubmit(event)
         totalIsReadySend[id] = validationResult;
     })
 
-    console.log("validation result", isReadySend);
+    // console.log("validation result", isReadySend);
 
     if (!totalIsReadySend.includes(false))
     {
@@ -164,39 +169,52 @@ async function onFormSubmit(event)
         formData.append("CLIENT_NAME", nameValue);
         formData.append("PAGE_NAME", pageName);
 
-        await fetch("/local/templates/inject/php/mm_vid-produktsii-form-handler.php", {
-            method: "POST",
-            body: formData,
-        })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                if (data.status === 200)
-                {
-                    showFinalModal(data.message, "/upload/mm_upload/icons/form-check.svg");
-                }
-                else if (data.status === 500)
-                {
-                    showFinalModal(data.message, "/upload/mm_upload/icons/form-error.svg");
-                }
-                else
-                {
-                    console.error(`Error code ${data.status}. Error message: ${data.message}`);
-                }
-            }).catch(data => {
-                console.log(data)
-            })
+
+        showFinalModal("Спасибо. С Вами скоро свяжутся!", "./form-check.svg");
+
+        // await fetch("#", {
+        //     method: "POST",
+        //     body: formData,
+        // })
+        //     .then(response => {
+        //         return response.json();
+        //         return true;
+        //     })
+        //     .then(data => {
+        //         if (data.status === 200)
+        //         {
+        //             showFinalModal(data.message, "/upload/mm_upload/icons/form-check.svg");
+        //         }
+        //         else if (data.status === 500)
+        //         {
+        //             showFinalModal(data.message, "/upload/mm_upload/icons/form-error.svg");
+        //         }
+        //         else
+        //         {
+        //             console.error(`Error code ${data.status}. Error message: ${data.message}`);
+        //         }
+        //     }).catch(data => {
+        //         console.log(data)
+        //     })
     }
 }
 
-const telMask = new Inputmask("+7 (999) 999-99-99", {
-    inputmode: "tel"
-});
-document.querySelectorAll('[type="tel"]').forEach(inputTel => telMask.mask(inputTel));
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll("form").forEach(formElem => {
+        formElem.addEventListener('submit', onFormSubmit);
 
-document.querySelectorAll("form").forEach(formElem => {
-    formElem.querySelectorAll("input:not(input[type='hidden'])").forEach(inputElem => {
-        inputElem.addEventListener('input', validateInputField);
+        formElem.querySelectorAll(`input:not(input[type="hidden"])`).forEach(input => {
+            input.removeAttribute('required');
+        })
+
+        formElem.querySelectorAll("input:not(input[type='hidden'])").forEach(inputElem => {
+            inputElem.addEventListener('input', validateInputField);
+        })
     })
+
+    const telMask = new Inputmask("+7 (999) 999-99-99", {
+        inputmode: "tel"
+    });
+
+    document.querySelectorAll('[type="tel"]').forEach(inputTel => telMask.mask(inputTel));
 })

@@ -6,6 +6,10 @@
 	max-width: 445px;
 
 	position: relative;
+
+	margin: 0 auto;
+
+	border: 1px solid #6F6F6F;
 }
 
 .form__form-title
@@ -43,10 +47,12 @@
 	margin-bottom: 11px;
 }
 
-.mediamintForm-input-wrapper label
+.mediamintForm-input-wrapper label:not(.agree-label)
 {
 	display: block;
 	margin-bottom: 5px;
+
+	transition: opacity .3s, transform .3s;
 }
 
 .mediaMint_form-input
@@ -71,23 +77,18 @@
 	position: relative;
 	z-index: 2;
 }
-.mm_landing-wrapper .form-input:placeholder-shown
+.mediaMint_form-input:placeholder-shown
 {
 	color: #6F6F6F;
 }
 
-/*.mm_landing-wrapper .form-elem .form-input:last-child*/
-/*{*/
-/*	margin-bottom: 0;*/
-/*}*/
-
-.mm_landing-wrapper .form-input.invalid
+.mediamintForm-input-wrapper.invalid .mediaMint_form-input
 {
 	border: 1px solid var(--red-color);
 	color: var(--red-color);
 	box-shadow: 0 0 4px 2px rgba(255, 0, 0, 0.25);
 }
-.mm_landing-wrapper .form-input.valid
+.mediamintForm-input-wrapper.valid .mediaMint_form-input
 {
 	border: 1px solid rgba(0, 0, 0, 0.24);
 	color: #000;
@@ -97,7 +98,7 @@
 .mediamintForm-input-invalid-message
 {
 	position: absolute;
-	top: 50%;
+	top: calc(50% + 15px);
 	transform: translateY(-50%);
 	right: calc(100% + 30px);
 
@@ -122,7 +123,7 @@
 		padding: 0;
 		color: var(--red-color);
 		background-color: transparent;
-		top: -12px;
+		top: 0;
 
 		transform: translateY(20px);
 		z-index: 0;
@@ -152,10 +153,6 @@
 
 	width: 17px;
 	height: 22px;
-
-	will-change: right;
-
-	/*animation: invalidMessageArrowAnimation ease-in-out infinite 1.3s;*/
 }
 @media screen and (max-width: 768px)
 {
@@ -165,39 +162,52 @@
 	}
 }
 
-/*@keyframes invalidMessageArrowAnimation*/
-/*{*/
-/*	from {*/
-/*		!*right: -17px;*!*/
-/*		transform: translateY(-50%) translateX(0);*/
-/*	}*/
-/*	50% {*/
-/*		!*right: -22px;*!*/
-/*		transform: translateY(-50%) translateX(5px);*/
-/*	}*/
-/*	100%*/
-/*	{*/
-/*		!*right: -17px;*!*/
-/*		transform: translateY(-50%) translateX(0);*/
-/*	}*/
-/*}*/
-
-.mm_landing-wrapper .form-input.invalid + .mediamintForm-input-invalid-message
+.mediamintForm-input-wrapper.invalid .mediamintForm-input-invalid-message
 {
 	opacity: 1;
 }
 @media screen and (max-width: 768px)
 {
-	.mm_landing-wrapper .form-input.invalid + .mediamintForm-input-invalid-message
+	.mediamintForm-input-wrapper.invalid .mediamintForm-input-invalid-message
 	{
 		opacity: 1;
+		/*transform: translateY(-12px);*/
+		transform: translateY(0);
+	}
+
+	.mediamintForm-input-wrapper.invalid label
+	{
+		opacity: 0;
 		transform: translateY(-12px);
 	}
 }
+@media screen and (max-width: 650px)
+{
+	.mediamintForm-input-wrapper.invalid label
+	{
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
 
-.free-consult__submit-btn
+.mediamintForm__submit-btn
 {
 	width: 100%;
+
+	font-size: 16px;
+	text-transform: uppercase;
+	background-color: var(--blue-color);
+	color: #fff;
+	padding: 15px 20px;
+
+	transition: background-color var(--anchor-hover-transition-duration);
+}
+@media screen and (min-width: 769px)
+{
+	.mediamintForm__submit-btn:hover
+	{
+		background-color: var(--red-color);
+	}
 }
 
 .agree-wrapper
@@ -239,14 +249,12 @@
 }
 .agree-label .custom-checkbox path.custom-checkbox__check
 {
-	/*opacity: 0;*/
 	transform: scale(0);
 	transition: opacity .3s, transform .3s;
 }
 
 .agree-checkbox:checked + .agree-label .custom-checkbox path.custom-checkbox__check
 {
-	/*opacity: 1;*/
 	transform: scale(1);
 }
 .agree-checkbox + .agree-label .custom-checkbox path.custom-checkbox__border
@@ -264,7 +272,7 @@
 	position: relative;
 	color: var(--blue-color);
 
-	transition: color var(--button-bg-color-transittion-time);
+	transition: color var(--anchor-hover-transition-duration);
 }
 .agree-label a::before
 {
@@ -277,7 +285,7 @@
 
 	background-color: var(--blue-color);
 
-	transition: background-color var(--button-bg-color-transittion-time);
+	transition: background-color var(--anchor-hover-transition-duration);
 }
 @media screen and (min-width: 769px)
 {
@@ -291,7 +299,7 @@
 	}
 }
 
-.success-wrapper
+.mediaMint-form__success-wrapper
 {
 	background-color: #fff;
 
@@ -309,9 +317,11 @@
 	justify-content: center;
 	align-items: center;
 
+	z-index: 2;
+
 	transition: opacity .3s;
 }
-.success-wrapper.showed
+.mediaMint-form__success-wrapper.showed
 {
 	opacity: 1;
 	pointer-events: all;

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 :root
 {
 	--anchor-hover-color: blue;
@@ -8,6 +10,10 @@
 	--blockquote-footer-text-color: #c4c4c4;
 
 	--marked-list-marker-color: blue;
+
+	--blue-color: rgb(64, 110, 189);
+	--red-color: red;
+	--dark-color: #3d3838;
 }
 
 *, *::before, *::after
@@ -85,6 +91,8 @@ body
 	flex-flow: column nowrap;
 	justify-content: space-between;
 	align-items: flex-start;
+
+	font-family: "Open Sans", sans-serif;
 }
 
 header, footer, main
@@ -145,31 +153,29 @@ main
 
 
 /* START text*/
+h1,h2,h3,h4,p,ul,ol,a,span
+{
+	line-height: 1.5em;
+}
+
+
 h1 {
 	margin-bottom: 30px;
-
-	line-height: 1.5em;
 }
 h2 {
-	margin-top: 17px;
-	margin-bottom: 14px;
-
-	line-height: 1.5em;
+	margin: 20px 0 14px;
 }
 h3 {
-	margin-bottom: 10px;
-	line-height: 1.5em;
+	margin: 20px 0 10px;
 }
 h4 {
 	margin-bottom: 10px;
-	line-height: 1.5em;
 }
 
 p {
-	margin-bottom: 14px;
+	margin: 15px 0;
 
 	font-size: 18px;
-	line-height: 1.5em;
 }
 /* END text*/
 
@@ -264,7 +270,8 @@ blockquote footer p::before
 	left: 0;
 
 	/* change it to (line-height / 2) */
-	top: 7px;
+	top: 50%;
+	transform: translateY(-50%);
 
 	background-color: var(--blockquote-footer-text-color);
 }
