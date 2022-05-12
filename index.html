@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="./base.css">
 	<link rel="stylesheet" href="./forms.css">
 
+	<link rel="stylesheet" href="./style.css">
+
 	<script src="./inputmask.min.js" async></script>
 	<script src="./script.js" defer></script>
 </head>
@@ -25,6 +27,8 @@
 		<h2>
 			Форма обратной связи
 		</h2>
+
+		<button class="modal" data-modal="">Открыть модалку</button>
 
 		<div class="form-wrapper">
 			<form action="./php_hadler.html" method="POST">
@@ -162,6 +166,53 @@
 				<p>Автор: <a target="_blank" title="Открыть гугл" href="https://google.ru">google.com</a></p>
 			</footer>
 		</blockquote>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Фамилия</th>
+					<th>Имя</th>
+					<th>Отчество</th>
+					<th>Адрес</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>Иванов</td>
+					<td>Иван</td>
+					<td>Иванович</td>
+					<td>Москва, Переулок, дом, квартира, подъезд</td>
+				</tr>
+
+				<tr>
+					<td>Петров</td>
+					<td>Петр</td>
+					<td>Петрович</td>
+					<td>Москва, Переулок, дом, квартира, подъезд</td>
+				</tr>
+
+				<tr>
+					<td>Сидоров</td>
+					<td>Иван</td>
+					<td>Иванович</td>
+					<td>Москва, Переулок, дом, квартира, подъезд</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<div class="modal-wrapper">
+		<button data-close-modal="">&times;</button>
+
+		<div class="modal-content">
+			<p class="modal__title">Заголовок модального окна</p>
+
+			<p class="modal__content-text">
+				<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto doloremque facilis odit officia recusandae? Deleniti odio quibusdam quis quos ut? Adipisci hic iusto nam, odio possimus sequi unde voluptates voluptatum.</span><span>Ab accusamus alias beatae doloribus et inventore modi nobis, optio quos repellat rerum, sapiente sunt, ullam unde voluptatum! Adipisci animi asperiores ducimus enim eum, labore odio odit quas rerum temporibus!</span><span>Ab assumenda blanditiis deserunt, doloremque doloribus, eligendi ex exercitationem facilis incidunt molestiae natus nemo odio placeat qui quisquam quod repellendus sit veniam veritatis voluptatum? Atque exercitationem expedita incidunt optio porro.</span><span>Laudantium nobis, temporibus? Ab amet animi at autem consequatur delectus dolorem eius excepturi illum impedit, ipsam laboriosam molestiae numquam obcaecati, placeat praesentium quae reiciendis repellat sit soluta ullam vel voluptate.</span><span>Accusantium architecto assumenda delectus dicta doloremque et ex excepturi, explicabo facilis, fugit illo in maxime modi nesciunt omnis pariatur qui quibusdam ratione, tempora temporibus tenetur vitae voluptas? Architecto, laudantium, porro.</span><span>Amet consequatur et incidunt minus quaerat, quasi vitae voluptates voluptatibus voluptatum? Accusamus adipisci asperiores assumenda autem deleniti error exercitationem, expedita fugit hic laborum laudantium odio officiis sapiente unde veritatis voluptas!</span><span>Accusantium amet aut consectetur corporis cum cupiditate debitis delectus dignissimos earum eius est et expedita ipsa ipsam itaque nemo nisi odio omnis possimus quidem quo, similique soluta unde veniam voluptates?</span><span>At, debitis eius fugiat illo laboriosam maiores nihil omnis, placeat soluta temporibus ullam vitae? Adipisci architecto commodi consectetur enim fugit necessitatibus, tenetur. Deleniti doloribus ea magni, nemo numquam quo saepe?</span><span>Aliquid aperiam at commodi consequuntur delectus dignissimos ducimus error eum fugit harum illum impedit iste iure iusto, labore libero magni minima minus nesciunt obcaecati porro qui sapiente unde voluptate voluptatibus!</span><span>Accusantium cumque dolore ducimus eaque eveniet iste itaque laborum maiores maxime nihil, quas quasi ratione voluptates. Enim et in inventore iure magni mollitia necessitatibus, odio quaerat quidem rem soluta, vero.</span>
+			</p>
+		</div>
 	</div>
 </body>
 </html>

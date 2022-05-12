@@ -280,3 +280,129 @@ blockquote footer p a
 {
 	color: inherit;
 }
+
+/* MODAL START */
+body.not-scrollable
+{
+	overflow-y: hidden;
+}
+
+.modal-wrapper
+{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	background-color: rgba(0,0,0,0.5);
+
+	opacity: 0;
+	pointer-events: none;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	transition: opacity .4s;
+}
+
+.modal-wrapper.showed
+{
+	opacity: 1;
+	pointer-events: all;
+}
+
+[data-close-modal]
+{
+	font-size: 80px;
+
+	position: fixed;
+	right: 40px;
+	top: 40px;
+}
+
+.modal-content
+{
+	transform: scale(0.8);
+
+	background-color: #fff;
+	max-width: 800px;
+	padding: 40px;
+
+	height: auto;
+	max-height: 80vh;
+	overflow: auto;
+
+	border-radius: 10px;
+
+	transition: transform .4s .3s;
+}
+
+.modal-wrapper.showed .modal-content
+{
+	transform: scale(1);
+}
+
+.modal__title
+{
+	width: 100%;
+	text-align: center;
+
+	font-size: 26px;
+	line-height: 1.5em;
+
+	margin-top: 0;
+	margin-bottom: 30px;
+}
+
+/* MODAL END */
+
+/* TABLE START */
+table
+{
+	width: 100%;
+	border: 2px solid var(--blue-color);
+
+	margin: 30px 0;
+	border-collapse: collapse;
+}
+
+tr
+{
+	border-top: 1px solid #000;
+}
+
+thead tr
+{
+	border-top: none;
+}
+tbody tr:first-child
+{
+	border-top: 2px solid #000;
+}
+
+th
+{
+	border-right: 2px solid black;
+	border-left: 2px solid black;
+}
+thead th:first-child
+{
+	border-left: none;
+}
+thead th:last-child
+{
+	border-right: none;
+}
+
+td
+{
+	padding: 5px;
+
+	border-right: 1px solid black;
+	border-left: 1px solid black;
+
+	border-radius: 2px;
+}
+/* TABLE END */

@@ -169,10 +169,11 @@ async function onFormSubmit(event)
         formData.append("CLIENT_NAME", nameValue);
         formData.append("PAGE_NAME", pageName);
 
+        const sendUrl = form.action;
 
         showFinalModal("Спасибо. С Вами скоро свяжутся!", "./form-check.svg");
 
-        // await fetch("#", {
+        // await fetch(sendUrl, {
         //     method: "POST",
         //     body: formData,
         // })
@@ -199,6 +200,22 @@ async function onFormSubmit(event)
     }
 }
 
+function modalHandler(event)
+{
+    // close
+    if(document.body.classList.contains("not-scrollable"))
+    {
+        document.body.classList.remove('not-scrollable');
+        document.querySelector('.modal-wrapper').classList.remove('showed');
+    }
+    // open
+    else if (event.type !== "keydown")
+    {
+        document.body.classList.add('not-scrollable');
+        document.querySelector('.modal-wrapper').classList.add('showed');
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll("form").forEach(formElem => {
         formElem.addEventListener('submit', onFormSubmit);
@@ -212,9 +229,26 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 
+
+    // mask for phone inputs
     const telMask = new Inputmask("+7 (999) 999-99-99", {
         inputmode: "tel"
     });
-
     document.querySelectorAll('[type="tel"]').forEach(inputTel => telMask.mask(inputTel));
+
+    // add modal handlers
+    document.querySelectorAll('[data-modal], [data-close-modal]')
+        .forEach(button => button.addEventListener('click', modalHandler));
+
+    // close modal by clicking BG
+    document.querySelector('.modal-wrapper').addEventListener('click', e=> {
+        e.stopPropagation();
+        if (e.target.classList.contains('modal-wrapper'))
+            modalHandler(null);
+    })
+
+    document.addEventListener('keydown', e => {
+        if (e.key === "Escape")
+            modalHandler(e);
+    })
 })
