@@ -8,6 +8,7 @@
 	<title>Mediamint</title>
 
 	<link rel="stylesheet" href="./base.css">
+	<link rel="stylesheet" href="./forms.css">
 </head>
 <body>
 	<div class="MediaMint-container-1320-responsive">
@@ -19,8 +20,87 @@
 			debitis deserunt doloribus, eaque earum eos expedita facilis hic ipsum necessitatibus nihil quam ratione rerum sapiente sed unde vero. Deleniti doloremque eligendi ipsum, iusto numquam quaerat sapiente suscipit tempore voluptatibus. A ab aperiam consequatur, consequuntur deserunt, doloremque eaque expedita iste libero magni possimus quod, ratione rem sed suscipit unde voluptatem voluptatibus! Aliquid consequuntur deleniti harum inventore iure magnam modi neque rerum sequi velit! Adipisci aperiam assumenda commodi cupiditate eligendi facere harum laboriosam laudantium numquam provident quidem, sit sunt, tempore, veniam voluptatem! Aliquam mollitia natus nisi quia? Laboriosam?</p>
 
 		<h2>
-			Заголовок второго уровня
+			Форма обратной связи
 		</h2>
+
+		<div class="form-wrapper">
+			<form action="#" method="POST">
+				<p class="form__form-title">
+					Форма обратной связи
+				</p>
+
+				<div class="mediamintForm-input-wrapper">
+					<label for="MM_name-input">Имя*</label>
+					
+					<input type="text" 
+					name="name"
+					autocomplete="name"
+					required
+					aria-describedby="name-input__error"
+					placeholder="Введите имя"
+					id="MM_name-input"
+					class="mediaMint_form-input"
+					>
+	
+					<span class="mediamintForm-input-invalid-message" id="name-input__error">Введите имя</span>
+				</div>
+	
+				<div class="mediamintForm-input-wrapper">
+					<label for="MM_email-input">Email*</label>
+					
+					<input type="email" 
+					name="email"
+					autocomplete="email"
+					required
+					aria-describedby="email-input__error"
+					placeholder="Введите Email"
+					id="MM_email-input"
+					class="mediaMint_form-input"
+					>
+	
+					<span class="mediamintForm-input-invalid-message" id="email-input__error">Введите email</span>
+				</div>
+	
+				<div class="mediamintForm-input-wrapper">
+					<label for="MM_phone-input">Телефон*</label>
+					
+					<input type="tel" 
+					name="phone"
+					autocomplete="phone"
+					required
+					aria-describedby="phone-input__error"
+					placeholder="Введите номер телефона"
+					id="MM_phone-input"
+					class="mediaMint_form-input">
+	
+					<span class="mediamintForm-input-invalid-message" id="phone-input__error">Неверный формат</span>
+				</div>
+	
+				<div class="mediamintForm-input-wrapper agree-wrapper">
+					<input type="checkbox" name="agree" id="form-policy-agree" class="agree-checkbox" checked>
+					
+					<label for="form-policy-agree" class="agree-label">
+						<svg class="custom-checkbox" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path class="custom-checkbox__check" fill-rule="evenodd" clip-rule="evenodd" d="M21.1116 3.63826C21.1757 3.70212 21.2265 3.77799 21.2611 3.86151C21.2958 3.94504 21.3136 4.03458 21.3136 4.12501C21.3136 4.21544 21.2958 4.30498 21.2611 4.3885C21.2265 4.47203 21.1757 4.5479 21.1116 4.61176L11.4866 14.2368C11.4228 14.3008 11.3469 14.3516 11.2634 14.3862C11.1799 14.4209 11.0903 14.4387 10.9999 14.4387C10.9095 14.4387 10.8199 14.4209 10.7364 14.3862C10.6529 14.3516 10.577 14.3008 10.5131 14.2368L6.38814 10.1118C6.32422 10.0478 6.27352 9.97195 6.23892 9.88843C6.20433 9.80492 6.18652 9.71541 6.18652 9.62501C6.18652 9.53461 6.20433 9.4451 6.23892 9.36158C6.27352 9.27806 6.32422 9.20218 6.38814 9.13826C6.45206 9.07434 6.52795 9.02363 6.61146 8.98904C6.69498 8.95444 6.78449 8.93664 6.87489 8.93664C6.96529 8.93664 7.0548 8.95444 7.13832 8.98904C7.22184 9.02363 7.29772 9.07434 7.36164 9.13826L10.9999 12.7779L20.1381 3.63826C20.202 3.57423 20.2779 3.52344 20.3614 3.48878C20.4449 3.45412 20.5345 3.43628 20.6249 3.43628C20.7153 3.43628 20.8049 3.45412 20.8884 3.48878C20.9719 3.52344 21.0478 3.57423 21.1116 3.63826V3.63826Z" fill="#406EBD"/>
+							<path class="custom-checkbox__border" fill-rule="evenodd" clip-rule="evenodd" d="M2.0625 17.875C2.0625 18.422 2.2798 18.9466 2.66659 19.3334C3.05339 19.7202 3.57799 19.9375 4.125 19.9375H17.875C18.422 19.9375 18.9466 19.7202 19.3334 19.3334C19.7202 18.9466 19.9375 18.422 19.9375 17.875V11C19.9375 10.8177 19.8651 10.6428 19.7361 10.5139C19.6072 10.3849 19.4323 10.3125 19.25 10.3125C19.0677 10.3125 18.8928 10.3849 18.7639 10.5139C18.6349 10.6428 18.5625 10.8177 18.5625 11V17.875C18.5625 18.0573 18.4901 18.2322 18.3611 18.3611C18.2322 18.4901 18.0573 18.5625 17.875 18.5625H4.125C3.94266 18.5625 3.7678 18.4901 3.63886 18.3611C3.50993 18.2322 3.4375 18.0573 3.4375 17.875V4.125C3.4375 3.94266 3.50993 3.7678 3.63886 3.63886C3.7678 3.50993 3.94266 3.4375 4.125 3.4375H15.125C15.3073 3.4375 15.4822 3.36507 15.6111 3.23614C15.7401 3.1072 15.8125 2.93234 15.8125 2.75C15.8125 2.56766 15.7401 2.3928 15.6111 2.26386C15.4822 2.13493 15.3073 2.0625 15.125 2.0625H4.125C3.57799 2.0625 3.05339 2.2798 2.66659 2.66659C2.2798 3.05339 2.0625 3.57799 2.0625 4.125V17.875Z" fill="#406EBD"/>
+						</svg>
+	
+						<span>
+							Я принимаю условия
+								<a target="_blank" href="/policy.pdf">
+									политики конфеденциальности
+								</a>
+						</span>
+					</label>
+				</div>
+			</form>
+
+			<div class="success-wrapper">
+				<img src="" alt="" class="success-icon">
+
+				<p class="success-text"></p>
+			</div>
+		</div>
 
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus animi assumenda consequatur, corporis debitis deserunt doloribus, eaque earum eos expedita facilis hic ipsum necessitatibus nihil quam ratione rerum sapiente sed unde vero. Deleniti doloremque eligendi ipsum, iusto numquam quaerat sapiente suscipit tempore voluptatibus. A ab aperiam consequatur, consequuntur deserunt, doloremque eaque expedita iste libero magni possimus quod, ratione rem sed suscipit unde voluptatem voluptatibus! Aliquid consequuntur deleniti harum inventore iure magnam modi neque rerum sequi velit! Adipisci aperiam assumenda commodi cupiditate eligendi facere harum laboriosam laudantium numquam provident quidem, sit sunt, tempore, veniam voluptatem! Aliquam mollitia natus nisi quia? Laboriosam?</p>
 
