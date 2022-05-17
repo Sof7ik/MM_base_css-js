@@ -185,47 +185,23 @@ ul, ol
 	margin: 25px 0;
 }
 
-ul li {
-	display: block;
-	margin-bottom: 15px;
-
-	position: relative;
-
-	padding-left: calc(10px + 15px);
-
+ul li,
+ol li
+{
 	font-size: 20px;
 	line-height: 1.5em;
+
+	margin-bottom: 10px;
 }
-ul li:last-child
+ul li:last-child,
+ol li:last-child
 {
 	margin-bottom: 0;
 }
-ul li::before
-{
-	display: block;
 
-	position: absolute;
-	content: "";
-
-	left: 5px;
-
-	top: calc(1.5em / 2 - 4px);
-
-	width: 10px;
-	height: 10px;
-	border-radius: 50%;
-
-	background-color: var(--marked-list-marker-color);
-}
-
-ol
+ol, ul
 {
 	padding-left: 20px;
-}
-
-ol li
-{
-	margin-bottom: 15px;
 }
 /* END Lists */
 
